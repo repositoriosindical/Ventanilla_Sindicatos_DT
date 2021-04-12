@@ -1,0 +1,80 @@
+---
+title: |
+ | \vspace{6cm} Minuta N°1:
+ | Análisis de la ventanilla sindical transparencia de la Dirección del Trabajo.
+subtitle: 'Cien años de estadísticas sindicales en Chile (1920-2021)'
+author: |
+ | \vspace{6cm} 
+ | Repositorio de Estadísticas Sindicales (RES)
+ | Nicolás Ratto, Sebastián Osorio, Felipe Marchant y Andreas Lafferte
+date: |
+ | Primero de mayo de 2021,
+ | versión 1.0
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc_depth: '4'
+    fig_caption: yes  
+header-includes:
+  - \usepackage{titling}
+  - \pretitle{\begin{center}
+    \includegraphics[width=2in,height=2in]{Input/Images/logo.png}\LARGE\\}
+  - \posttitle{\end{center}}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\newpage
+
+# Sobre el documento
+
+El documento busca resumir el procesamiento y análisis de los datos de la ventanilla de transparencia de la Dirección del Trabajo.  
+
+# Sobre el Repositorio de Estadísticas Sindicales
+
+El Repositorio de Estadísticas Sindicales busca ordenar y centralizar distintos datos sobre la trayectoria y el estado actual del sindicalismo en el país. Esto, con el objeto de brindarle oportunamente a las organizaciones sindicales y a otros estudiosos/as del trabajo información actualizada, de confianza y reproducible.
+
+El observatorio es una iniciativa levantada, sostenida y financiada por investigadores del trabajo independientes y parte de organizaciones de la sociedad civil afines a la temática, como [CIPSTRA](https://cipstra.cl/) y [GETSUR](http://www.getsur.cl/). Cualquiera puede colaborar corrigiendo información, proponiendo medidas alternativas o aportando con nuevos datos. El trabajo es abierto y colaborativo en el Github del [Repositorio de Estadísticas Sindicales](https://github.com/ObservatorioSindical), o escribiéndo al mail de las organizaciones: <cipstra@gmail.com>.
+
+
+```{r, echo=FALSE, fig.align='center', out.width=c("25%","50%"), fig.show='hold'}
+knitr::include_graphics(c("Input/Images/Getsur.jpeg","Input/Images/logo_sin_fondo.png"))
+```
+
+$$\\[1in]$$
+
+**Como citar:** 
+
+Autor et. al. (2021) Minuta N°1: *Análisis de la ventanilla sindical transparencia de la Dirección del Trabajo*. Repositorio de Estadísticas Sindicales (RES). Disponible en: https://repositoriosindical.netlify.app/ 
+
+
+
+\newpage
+
+# Introducción
+
+Los datos cuantitativos sobre los sindicatos en Chile son principalmente producidos y concentrados por la Dirección del Trabajo, en tanto es la institución en la cuál los sindicatos se deben registrar para constituirse como tales. Así también, en esta institución deben registrar sus elecciones internas, sus contratos colectivos e informar sobre el estado de sus conflictos huelguísticos, para así mantener en el tiempo su estado de "activos". Además, permanentemente monitorea la situación de las relaciones laborales en el país mediante estudios como la Encuesta Laboral (Encla). 
+
+
+\newpage
+
+# Desarrollo
+
+
+
+
+
+
+\newpage
+
+# Apartado metodológico
+
++ [Ventanilla sindical](../ventanilla). Microdato con información de cada sindicato constituido en el país desde 1920 hasta 2020. La información no se encuentra depurada y presenta contradicciones. Variables fundamentales como la actividad económica tiene información para menos del 30% de los sindicatos. La base está actualizada hasta el momento mismo en que se descarga y presenta información sobre número de socias y socios, fecha de constitución del sindicato, estado, fecha de último registro, tipo de sindicato, rut de la empresa a la que pertenece el sindicato, entre otras cuestiones. Una vez depurada la base permite obtener indicadores actualizados y alternativos a los oficiales publicados con retraso por la Dirección del Trabajo.
+
+
+\newpage
+
+# Bibliografía
+

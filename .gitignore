@@ -1,0 +1,13 @@
+
+INPUT/archivo_sindicatos.xlsx
+INPUT/archivo_func_centrales_conf.xlsx
+INPUT/archivo_func_centrales_conf_20201201.xlsx
+INPUT/archivo_func_centrales_conf_20210120.xlsx
+INPUT/archivo_sindicatos_20201201.xlsx
+INPUT/archivo_sindicatos_20210120.xlsx
+INPUT/archivo_sindicatos_limpia.xlsx
+PROCESO/empresas_fondecyt_retail.R
+INPUT/basesDT.Rdata
+INPUT/archivo_sindicatos_20210410.xlsx
+README.md
+PROCESO/Documento Graficos Retail.Rmd
