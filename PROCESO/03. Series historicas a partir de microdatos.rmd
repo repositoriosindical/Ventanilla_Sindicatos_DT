@@ -14,6 +14,7 @@ output:
    toc: true
    toc_depth: 1
    toc_float: TRUE
+   code_folding: hide
 ---
 
 ```{r warning=FALSE,message=FALSE}

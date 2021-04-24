@@ -69,7 +69,12 @@ El informe se organiza de la siguiente manera: primero, se presentan datos sobre
 
 # Desarrollo
 
-```{r, echo=FALSE, fig.align='center', out.width=c("100%"), fig.show='hold'}
+La Figura 1 muestra la evolución del número de sindicatos activos en Chile desde 1920 a 2021. Según se observa, el crecimiento de la actividad sindical va en sostenido aumento hasta 1973, cuando se estanca con 3548 sindicatos activos a nivel nacional. La cifra se mantiene estable hasta la instalación del Plan Laboral de 1979-1980, cuando se vuelve a permitir y se formaliza el funcionamiento de las organizaciones sindicales en el país. Con la reforma los sindicatos activos decaen a 1477, en tanto varios de los sindicatos del periodo previo no se registraron bajo la nueva institucionalidad. En la década de 1990, en tiempos de transición de la democracia, la actividad sindical crece acercándose a sus cifras en los años anteriores a 1980. Posteriormente, la cantidad de sindicatos activos a nivel nacional experimenta un crecimiento sostenido hasta la actualidad, superando las 10.000 organizaciones activas. Esto, entre otras razones, puede deberse tanto a factores económicos, como el crecimiento de nuevos sectores con fuerza de trabajo (servicios, construcción, educación y salud), así como a factores institucionales, tal como el Plan Laboral que permite y estimula el paralelismo sindical y ciclos de vida relativamente cortos de los sindicatos. 
+
+Lo anterior es de interés mayúsculo ya que, comparando con los años anteriores al quiebre democratico (1920-1973) caracterizado como el periodo de construcción y avance sindical más grande en la historia (REFERENCIA), la cantidad de sindicatos activos actualmente no se condice con una fuerza y conformación estable del sindicalismo. De este modo, este dato sobre el explosivo crecimiento de sindicatos activos nos acerca más bien a cuestionar las constricciones económicas e institucionales bajo las cuales el sindicalismo se desarrolla actualmente. 
+
+**Figura 1**.
+```{r, echo=FALSE, fig.align='center', out.width=c("80%"), fig.show='hold'}
 graficos<-list.files("../OUTPUT/Graficos/Nacionales")
 knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/",graficos[1]))
 ```
@@ -93,21 +98,43 @@ knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/",graficos[5]))
 ```
 
 ```{r, echo=FALSE, fig.align='center', out.width=c("100%"), fig.show='hold'}
-knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/",graficos[7]))
+knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/",graficos[6]))
 ```
 
-
-```{r, echo=FALSE, fig.align='center', out.width=c("100%"), fig.show='hold'}
-knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/",graficos[7]))
-```
 \newpage
 
 # Apartado metodológico
 
-+ [Ventanilla sindical](../ventanilla). Microdato con información de cada sindicato constituido en el país desde 1920 hasta 2020. La información no se encuentra depurada y presenta contradicciones. Variables fundamentales como la actividad económica tiene información para menos del 30% de los sindicatos. La base está actualizada hasta el momento mismo en que se descarga y presenta información sobre número de socias y socios, fecha de constitución del sindicato, estado, fecha de último registro, tipo de sindicato, rut de la empresa a la que pertenece el sindicato, entre otras cuestiones. Una vez depurada la base permite obtener indicadores actualizados y alternativos a los oficiales publicados con retraso por la Dirección del Trabajo.
+La presente minuta es de código abierto. El detalle del procesamiento y análisis de los datos, desde que fueron bajados de internet, puede revisarse en detalle en el [repositorio del proyecto](https://github.com/nicolasrattor/Ventanilla_Sindicatos_DT). Cualquier comentario o mejora son bienvenidos.  
+
+En términos generales, lo primero fue descargar manualmente la base de datos de organizaciones sindicales de la "ventanilla de transparencia" de la Dirección del Trabajo (DT). Esta base fue descargada por última vez el 10 de abril del año 2021, por lo que la categorización de los estados de los sindicatos y la definición del número de afiliados/as tienen como punto de referencia esta fecha o, el último trámite realizado por las organizaciones en la Dirección del Trabajo. La base descargada contenía el registro actualizado de 38.967 organizaciones sindicales constituidas en Chile desde 1900 hasta 2021 (38.956 organizaciones al quitar los duplicados). 
+
+Los sindicatos vienen clasificados según su estado de "activo", "receso", "caducado", "eliminado" o "disuelto". Filtrando por los casos activos, se podría suponer que al 10 de abril de 2021 en Chile existían 12.419 sindicatos activos. Esta cifra parece coherente con los últimos datos oficiales publicados por la Dirección del Trabajo en su compendio de organizaciones sindicales. Según esta, en el año 2019 -trimestre Octubre a Diciembre- existían 11.926 sindicatos activos.
+
+El uso de esta fuente de información sindical, sin embargo, no solo permite obtener el dato actualizado a la fecha de descarga de los sindicatos activos en Chile, logrando un monitoreo en tiempo real de una parte de las relaciones laborales en el país; sino que también permite tener obtener los datos de sindicatos activos para antes del año 1990, cuestión que ningún compendio o anuario de la Dirección del Trabajo registra^[Incluso, la fuente permite vincular cada sindicato con la empresa a la que pertenece, en tanto la base de datos tienen la variable "rut empresa". Con esta variable es posible vincular la base de sindicatos con otras bases de datos públicas con rut de empresa, como las del Servicio de Impuestos Internos (SII), a la vez que permite obtener medidas alternativas, como paralelismo sindical, temática sobre la cual se elaborará un próximo documento.]. 
+
+Luego de la descarga, se generaron microbases para cada mes (t) desde enero de 1920 a marzo de 2021 (1215 bases). Esto se hace mediante una función  detallada en el script 01, en el apartado "III. Función para hacer microbases para todo el periodo". Cada microbase tiene como supuesto el considerar solamente a aquellos sindicatos que se encontraban activos en el año-mes (`t`) de cada microbase. Para cada tiempo (`t`) se filtran aquellos sindicatos activos en 2021 que se constituyeron entre el primer día y el último de `t`, y aquellos sindicatos no activos en 2021 pero cuya última fecha de elección de directiva ocurrió después del último día de `t`. Posteriormente se calcula para cada tiempo t el total de sindicatos activos y de trabajadores afiliados/as (script 03). Los resultados se consolidan en tabulados, se grafican y se exportan. 
+
+Sobre la calidad del dato de trabajadores/as afiliados: este no es del todo exacto, ya que el número de afiliados es el registrado por la Dirección del Trabajo en el último trámite realizado por el sindicato. Por tanto, si un sindicato en 2015 tiene 5000 socios, esos 5000 socios corresponden al último periodo registrado por la DT para ese sindicato, probablemente 2017-2020 en ese caso. Para cada periodo o tiempo `t` hay una sub o sobreestimación en el número de afiliados/as de cada sindicato. Por ende, es necesario tomar este dato como un proxy, cuyo ajuste con la realidad es probable que disminuya mientras más nos alejamos de la fecha en la que es descargada la base de datos. 
+
 
 
 \newpage
 
 # Bibliografía
+
+
+$$\\[1in]$$
+
+# Próximas minutas
+
++ Paralelismo sindical en las empresas chilenas. ¿Hacia una creciente fragmentación del trabajo?
+
++ Evolución sindical en la empresa. Aplicación / función para caracterizar las relaciones laborales en estudios de caso. 
+
++ Nuevas estimaciones de las tasas de afiliación sindical en Chile (2010-2018), con Anuarios de la Dirección del Trabajo y la Encuesta Nacional de Empleo calibrada al 2017.
+
++ No todo es desorganización. Evolución de las tasas de sindicalización en las grandes empresas chilenas.  Encla 1998 - 2019.
+
++ Estimación de la sindicalización con la Encuesta Nacional de Empleo (2018-2021). 
 

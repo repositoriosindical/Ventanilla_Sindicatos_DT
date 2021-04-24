@@ -50,6 +50,8 @@ base %>% filter(!is.na(CAE)&CAE>0) %>% tally()
 
 table(base$CAE)
 
+base %>% filter(glosa=="ACTIVO") %>% count()
+
 ## Formato fecha
 
 base<-base %>% mutate(FechaConstitucion=ymd(FechaConstitucion),

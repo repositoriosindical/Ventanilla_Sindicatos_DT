@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/752794/cdc783d2b812483bb000d59d43cf614f
+bundleId: https://api.rpubs.com/api/v1/document/752794/cdc783d2b812483bb000d59d43cf614f
+url: http://rpubs.com/nicolasrattor/752794
+when: 1619128627.77676
