@@ -70,12 +70,12 @@ El informe se organiza en tres grandes apartados: primero, se realiza un anális
 
 # Sindicatos activos y constituidos en los últimos tres años
 
-En Chile, durante el [mes de marzo de 2021]("../OUTPUT/Minuta1/BBDD_sindicatos_activos.xlsx") existían 12.447 sindicatos activos y 1.243.317 trabajadores/as afiliados/as a sindicatos. De estos afiliados/as, 722.233 trabajadores son hombres y 521.084 son mujeres. A la fecha comentada, la mayoría de los sindicatos se concentraban en la Región Metropolitana (4,765), Valparaíso (1.361) y Biobío (1222); según su tipo, estos eran principalmente de empresa (6.843), de independientes (2.904), interempresa (1.436), de establecimiento (977) y transitorios (287). Los sindicatos de empresa, de establecimientos y transitorios se concentran en 5.040 empresas diferentes. En cada empresa una de estas empresas, en promedio, existían 1,53 sindicatos, y en el 22,7% de estas se encontraban activos 2 o más sindicatos.
+En Chile, durante el [mes de marzo de 2021]("https://github.com/nicolasrattor/Ventanilla_Sindicatos_DT/raw/main/OUTPUT/Minuta1/BBDD_sindicatos_activos.xlsx") existían 12.447 sindicatos activos y 1.243.317 trabajadores/as afiliados/as a sindicatos. De estos afiliados/as, 722.233 trabajadores son hombres y 521.084 son mujeres. A la fecha comentada, la mayoría de los sindicatos se concentraban en la Región Metropolitana (4,765), Valparaíso (1.361) y Biobío (1222); según su tipo, estos eran principalmente de empresa (6.843), de independientes (2.904), interempresa (1.436), de establecimiento (977) y transitorios (287). Los sindicatos de empresa, de establecimientos y transitorios se concentran en 5.040 empresas diferentes. En cada empresa una de estas empresas, en promedio, existían 1,53 sindicatos, y en el 22,7% de estas se encontraban activos 2 o más sindicatos.
 
 ¿Qué tan distinto era este panorama a inicios de 2018, cuando recién asumió la presidencia Sebastián Piñera, el estallido social aún no comenzaba y la pandemia parecía ser un futuro distópico? En cuanto a la cantidad de sindicatos activos cada mes entre 2018 y 2021 (Figura 1), es posible observar un declive notorio desde inicios de 2019 y, sobre todo, desde noviembre de 2019 y el inicio de la pandemia por Covid-19. Solo se observa un leve aumento de sindicatos activos en el mes de octubre cuando comienzan las movilizaciones, protestas y huelgas nacionales. No obstante, esta tendencia a la baja se agudiza aún más en contexto de los primeros meses de pandemia en el 2020, llegando a 12.300 sindicatos activos en Chile. Vale decir, cerca de 200 sindicatos entraron en receso o perecieron en dicho periodo. Pese a lo anterior, en los meses posteriores hasta comienzos de 2021 comienza a proliferar la cantidad de sindicatos activos a nivel nacional, planteando el contexto actual de los sindicatos como una fase de recuperación paulatina.
 
 
-```{r, echo=FALSE, fig.align='center', out.width=c("100%"), fig.show='hold',  fig.link='../OUTPUT/Minuta1/tabla1.xlsx'}
+```{r, echo=FALSE, fig.align='center', out.width=c("100%"), fig.show='hold',  fig.link='https://github.com/nicolasrattor/Ventanilla_Sindicatos_DT/raw/main/OUTPUT/Minuta1/tabla1.xlsx'}
 knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/",graficos[5]))
 ```
 
@@ -95,7 +95,7 @@ Las tres tasas que publica la Dirección del Trabajo y que se grafican en la Fig
 
 + Tasa de sindicalización respecto de los asalariados con posibilidad de sindicalizarse (TS3). Esta tasa divide a toda la población afiliada, menos a aquellos afiliados a sindicatos de independientes, por los asalariados del sector privado y personal de servicio doméstico. Al igual que la anterior, excluye a asalariados del sector público. La tercera tasa de sindicalización no oficial es de un 22.27% para el 2020.
 
-```{r, echo=FALSE, fig.align='center', out.width=c("100%"), fig.show='hold', fig.link='../OUTPUT/Minuta1/tasas.xlsx'}
+```{r, echo=FALSE, fig.align='center', out.width=c("100%"), fig.show='hold', fig.link='https://github.com/nicolasrattor/Ventanilla_Sindicatos_DT/raw/main/OUTPUT/Minuta1/tasas.xlsx'}
 knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/",graficos[6]))
 ```
 
