@@ -455,3 +455,95 @@ writexl::write_xlsx(proxy_2021_3,"../OUTPUT/Minuta1/BBDD_sindicatos_activos.xlsx
 
 ```
 
+
+# Otros zoom al estallido y la pandemia
+
+```{r}
+
+afiliados %>% 
+  filter(fecha>=ymd("2018-01-01")) %>% 
+  select(fecha,Total) %>%
+    ggplot(aes(x=fecha,y=Total))+geom_line()+theme_bw() + 
+    scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE)) + 
+    labs(title = "Afiliados a sindicatos activos en Chile (1920-2021)",
+         subtitle = "La diferencia es escasa, por ajuste de ejes se percibe como amplia",
+       x="Tiempo", 
+       y = "Sindicatos",
+       caption = "Por Repositorio de Estadísticas Sindicales (RES), 
+       En base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo.")
+
+afiliados %>% 
+  filter(fecha>=ymd("2018-01-01")) %>% 
+  select(fecha,Socios,Socias) %>% pivot_longer(cols = c(Socios,Socias)) %>% 
+    ggplot(aes(x=fecha,y=value,color=name))+geom_line()+theme_bw() + 
+    scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE)) + 
+    labs(title = "Socios y socias afiliados/as a sindicatos activos en Chile (1920-2021)",
+       x="Tiempo", 
+       y = "Sindicatos",
+       caption = "Por Repositorio de Estadísticas Sindicales (RES), 
+       En base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo.") +
+       scale_color_manual(values=c("red","black"))
+
+afiliados_tipo%>%
+  filter(fecha>=ymd("2018-01-01")) %>% 
+ select(fecha,1:5) %>% pivot_longer(2:6) %>% 
+    ggplot(aes(x=fecha,y=value,color=name))+geom_line()+theme_bw() + 
+    scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE)) + 
+    labs(title = "Afiliados a sindicatos activos por tipo de sindicatos en Chile (1920-2021)",
+       x="Tiempo", 
+       y = "Sindicatos",
+       caption = "Por Repositorio de Estadísticas Sindicales (RES), 
+       En base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo.") +
+       scale_color_manual(values=c("red","black","green","blue","purple")) +
+  theme(legend.position = "bottom")
+
+
+base %>% mutate(FechaConstitucion=ymd(FechaConstitucion) ) %>% 
+  filter(FechaConstitucion>=ymd("2018-01-01")) %>% 
+  mutate(ano_constitucion=year(FechaConstitucion),mes_constitucion=month(FechaConstitucion)) %>% 
+  group_by(ano_constitucion,mes_constitucion,Region) %>% 
+  summarise(sindicatos_constituidos=n()) %>% 
+  mutate(FechaConstitucion=make_date(year=ano_constitucion,month=mes_constitucion)) %>%
+  
+  ggplot(aes(x=FechaConstitucion,y=sindicatos_constituidos,color=as.factor(Region)))+geom_line()+theme_bw() +
+    scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE)) + 
+    labs(subtitle = "Sindicatos constituidos cada mes",
+       x="Tiempo", 
+       y = "Sindicatos") + 
+  geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "red") +
+  geom_vline(xintercept = ymd("2020-03-01"),linetype = "dashed", colour = "red")
+
+
+base %>% mutate(FechaConstitucion=ymd(FechaConstitucion) ) %>% 
+  filter(FechaConstitucion>=ymd("2018-01-01")) %>% 
+  mutate(ano_constitucion=year(FechaConstitucion),mes_constitucion=month(FechaConstitucion)) %>% 
+  group_by(ano_constitucion,mes_constitucion,Region) %>% 
+  summarise(sindicatos_constituidos=n()) %>% 
+  mutate(FechaConstitucion=make_date(year=ano_constitucion,month=mes_constitucion)) %>%
+  
+  ggplot(aes(x=FechaConstitucion,y=sindicatos_constituidos,color=as.factor(Region)))+geom_line()+
+  facet_wrap(~as.factor(Region),scales = "free")+
+  theme_bw() +
+    scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE)) + 
+    labs(subtitle = "Sindicatos constituidos cada mes por región",
+       x="Tiempo", 
+       y = "Sindicatos",
+       caption = "Repositorio de Estadísticas Sindicales (RES)") + 
+  geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "red") +
+  geom_vline(xintercept = ymd("2020-03-01"),linetype = "dashed", colour = "red") + 
+  theme(legend.position = "none")
+
+
+ggsave(
+  plot = last_plot(),
+  filename = "../OUTPUT/Graficos/Nacionales/Constituidos_region_2018-2021.png",
+  device = "png",
+  dpi = "retina",
+  units = "cm",
+  width = 30,
+  height = 20
+)
+
+
+```
+

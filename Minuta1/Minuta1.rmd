@@ -9,8 +9,7 @@ author: |
  | Repositorio de Estadísticas Sindicales (RES)
  | Nicolás Ratto, Andreas Lafferte y Felipe Marchant
 date: |
- | Primero de mayo de 2021,
- | versión 1.0
+ | Primero de mayo de 2021
 output:
   pdf_document:
     latex_engine: xelatex
@@ -19,7 +18,7 @@ output:
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
-    \includegraphics[width=2in,height=2in]{Input/Images/logo.png}\LARGE\\}
+    \includegraphics[width=1.5in,height=1.5in]{Input/Images/logo_transparent.png}\LARGE\\}
   - \posttitle{\end{center}}
 ---
 
@@ -76,16 +75,16 @@ En Chile, durante el [mes de marzo de 2021]("https://github.com/nicolasrattor/Ve
 
 
 ```{r, echo=FALSE, fig.align='center', out.width=c("100%"), fig.show='hold',  fig.link='https://github.com/nicolasrattor/Ventanilla_Sindicatos_DT/raw/main/OUTPUT/Minuta1/tabla1.xlsx'}
-knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/",graficos[5]))
+knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/","Grafico2018-2021.png"))
 ```
 
 De acuerdo con el panel derecho de la Figura 1, la cantidad de sindicatos constituidos cada mes entre 2018 y 2019 sigue una tendencia bastante variable, en el sentido que en ciertos meses la cantidad de sindicatos constituidos es muy baja y en otros muy alta. Observando con detalle en el mes de octubre de 2019, la cantidad de sindicatos constituidos a partir de dicho mes aumenta hasta diciembre de 2020, cuestión que se desarrolla en paralelo a la explosión de protestas y movilización social a partir del estallido social. Sin embargo, los niveles a los que llega la constitución de sindicatos en diciembre de 2019 (100), en ningún caso son más altos que las cifras alcanzadas en meses anteriores, como en abril de 2018, cuando los sindicatos constituidos superaron los 150. Comenzando el año 2020, este ritmo de constitución sindical decae abruptamente por el inicio de la pandemia por Covid-19, en donde el desempleo y la inestabilidad laboral fueron constantes condiciones para la acción sindical. Esta caída, mayor que cualquiera de los años y meses anteriores, comienza a revertirse levemente durante a finales del año 2020. Este fenómeno es destacable ya que denota la importancia del efecto de la pandemia sobre las condiciones laborales y de organización de los/as trabajadores, actuando como una condicionante importante en la constitución de sindicatos. 
 
-Desde los años noventa, como mostraremos en una próxima minuta, las organizaciones sindicales y su población afiliada, mostraban una tendencia estable hacia el alza continua, la que solo se ha visto interrumpida en los últimos dos años por la situación política y sanitaria en la que se encuentra el país. Este panorama nos sugiere la existencia de una fragilidad organizacional de los sindicatos que incluso podría estar subestimada, en tanto es probable que el declive sindical reportado en los últimos años sea aún mayor. Esto se deberá confirmar durante el transcurso del año, cuando se vayan actualizando los registros administrativos de la DT según el estado de quiebra de las empresas y de los trabajadores desvinculados. Estos últimos pueden seguir siendo considerados por los registros administrativos como población afiliada a sindicatos, siendo que ya no se encuentran ocupados en empresas con sindicatos.
+Desde los años noventa, como mostraremos en una próxima minuta, las organizaciones sindicales y su población afiliada, mostraban una tendencia estable hacia el alza continua, la que solo se ha visto interrumpida en los últimos dos años por la situación política y sanitaria en la que se encuentra el país. Este panorama nos sugiere la existencia de una fragilidad organizacional de los sindicatos que incluso podría estar subestimada, en tanto es probable que el declive sindical reportado en los últimos años sea aún mayor. Esto se deberá confirmar durante el transcurso del año, cuando se vayan actualizando los registros administrativos de la DT según el estado de quiebra de las empresas y de los trabajadores desvinculados. Estos últimos pueden seguir siendo considerados por los registros administrativos como población afiliada a sindicatos, siendo que ya no se encuentran ocupados en empresas con sindicatos. Por otro lado, a nivel regional pueden estar ocurriendo situaciones administrativas por parte de la Dirección del Trabajo que están impidiendo el registro de organizaciones sindicales, impidiendo satisfacer la demanda de los trabajadores por constituir organizaciones sindicales. Esto es especialmente notorios en regiones como la Araucanía, Magallanes, Los Ríos o Ñuble (ver gráfico en Anexos).
 
-# Afiliados/as a sindicatos y tasas de sindicalización
+# Tasas de sindicalización
 
-Debido a que con los datos ocupados en esta minuta se tiene el número de sindicatos activos para cada mes desde 1920 hasta 2021 y, en tanto la cifra oficial de la tasa de sindicalización para el año 2020 aún no está disponible en la web de la Dirección del Trabajo, a continuación presentamos las tasas de afiliación sindical no oficiales para los años 2010-2020. Para esto utilizamos los ya reportados datos de la ventanilla de transparencia y los datos de ocupación de la Encuesta Nacional de Empleo del Instituto Nacional de Estadística. En términos generales, para la construcción de las tasas sindicales, la Dirección del Trabajo divide sus indicadores de afiliados y afiliadas a sindicatos, por las estimaciones de ocupados en el trimestre Octubre-Diciembre (OND) del Instituto Nacional de Estadística (ver Tabla 2).
+Debido a que con los datos ocupados en esta minuta se conoce el número de sindicatos activos para cada mes desde 1920 hasta 2021, y en tanto la cifra oficial de la tasa de sindicalización para el año 2020 aún no está disponible en la web de la Dirección del Trabajo, a continuación presentamos las tasas de afiliación sindical no oficiales para los años 2010-2020. Para esto utilizamos los datos reportados de la ventanilla de transparencia y los datos de ocupación de la Encuesta Nacional de Empleo del Instituto Nacional de Estadística. En términos generales, para la construcción de las tasas sindicales, la Dirección del Trabajo divide sus indicadores de afiliados y afiliadas a sindicatos por las estimaciones de ocupados en el trimestre Octubre-Diciembre (OND) del Instituto Nacional de Estadística (ver Tabla 2).
 
 Las tres tasas que publica la Dirección del Trabajo y que se grafican en la Figura 2 se definen de la siguiente forma:
 
@@ -96,10 +95,10 @@ Las tres tasas que publica la Dirección del Trabajo y que se grafican en la Fig
 + Tasa de sindicalización respecto de los asalariados con posibilidad de sindicalizarse (TS3). Esta tasa divide a toda la población afiliada, menos a aquellos afiliados a sindicatos de independientes, por los asalariados del sector privado y personal de servicio doméstico. Al igual que la anterior, excluye a asalariados del sector público. La tercera tasa de sindicalización no oficial es de un 22.27% para el 2020.
 
 ```{r, echo=FALSE, fig.align='center', out.width=c("100%"), fig.show='hold', fig.link='https://github.com/nicolasrattor/Ventanilla_Sindicatos_DT/raw/main/OUTPUT/Minuta1/tasas.xlsx'}
-knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/",graficos[6]))
+knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/","tasaafiliacionsindical_nooficiales.png"))
 ```
 
-Observando la Figura 2, la cual gráfica la evolución de las tres tasas de sindicalización desde 2010 a 2020, se demuestra un crecimiento estable de la afiliación sindical, con algunos años de mayor auge que otros. Sin embargo, destaca el aumento en las 3 tasas de sindicalización en 2020 respecto de 2019. Esto en ningún caso debe interpretarse como una revitalización sindical, en tanto la variación se explica por la fuerte caída del empleo, y la caída en la tasa de participación de la fuerza de trabajo, en el año 2020 por efecto de la pandemia por Covid-19. Como se verá en el siguiente apartado, en 2020 el número de sindicatos y afiliados ha disminuido. 
+Observando la Figura 2, la cual gráfica la evolución de las tres tasas de sindicalización desde 2010 a 2020, se demuestra un crecimiento estable de la afiliación sindical, con algunos años de mayor auge que otros. Sin embargo, destaca el aumento en las 3 tasas de sindicalización en 2020 respecto de 2019. Esto en ningún caso debe interpretarse como una revitalización sindical, en tanto la variación se explica por la fuerte caída del empleo y la caída en la tasa de participación de la fuerza de trabajo, en el año 2020 por efecto de la pandemia por Covid-19. Como se verá en el siguiente apartado, en 2020 el número de sindicatos y afiliados ha disminuido. 
 
 
 \newpage
@@ -129,6 +128,13 @@ TS3 = Población Afiliada (excluye afiliados independientes) / Total de ocupados
 
 \newpage
 
+# Anexos
+
+```{r, echo=FALSE, fig.align='center', out.width=c("100%"), fig.show='hold'}
+knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/","Constituidos_region_2018-2021.png"))
+```
+
+
 # Próximas minutas
 
 + Una mirada histórica a los registros administrativos de la Dirección del Trabajo sobre sindicatos y afiliación sindical (1920-2019)
@@ -139,9 +145,10 @@ TS3 = Población Afiliada (excluye afiliados independientes) / Total de ocupados
 
 + Nuevas estimaciones de las tasas de afiliación sindical en Chile (2010-2018), con Anuarios de la Dirección del Trabajo y la Encuesta Nacional de Empleo calibrada al 2017.
 
-+ No todo es desorganización. Evolución de las tasas de sindicalización en las grandes empresas chilenas.  Encla 1998 - 2019.
++ No todo es desorganización. Evolución de las tasas de sindicalización en las grandes empresas chilenas. Encla 1998 - 2019.
 
 + Estimación de la sindicalización con la Encuesta Nacional de Empleo (2018-2021). 
+
 
 
 
