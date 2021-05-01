@@ -58,8 +58,15 @@ sindicatos[i,1] <- get(
 
 sindicatos<-sindicatos %>% cbind(fecha) %>% mutate(fecha=ymd(paste0(ano,"-",mes,"-01"))) %>% rename(sindicatos=X1.nrow.fecha.)
 
-
 ```
+
+Sindicatos activos al 31 de marzo de 2021. 
+
+```{r}
+sindicatos %>% filter(ano==2021&mes==3)
+```
+
+
 
 ```{r echo=FALSE}
 wb <- createWorkbook()
@@ -115,6 +122,40 @@ afiliados<-afiliados %>% cbind(fecha) %>% mutate(fecha=ymd(paste0(ano,"-",mes,"-
 names(afiliados)<-c("Socios","Socias","Total","ano","mes","fecha")
 
 ```
+
+
+Afiliados a sindicatos activos al 31 de marzo de 2021. 
+```{r}
+afiliados %>% filter(ano==2021&mes==3)
+```
+
+Información sindical para el mes de marzo de 2021.  
+
+```{r}
+proxy_2021_3 %>% group_by(Region) %>% tally() %>% arrange(-n)
+
+proxy_2021_3 %>% group_by(glosa1) %>% tally() %>% arrange(-n)
+
+proxy_2021_3 %>% filter(glosa1!="SINDICATO INDEPENDIENTE"&glosa1!="SINDICATO INTER EMPRESA") %>% 
+  group_by(Rut) %>% tally() %>% arrange(-n) %>% count()
+
+proxy_2021_3 %>% filter(glosa1!="SINDICATO INDEPENDIENTE"&glosa1!="SINDICATO INTER EMPRESA") %>% 
+  group_by(Rut) %>% tally() %>% arrange(-n) %>% filter(!is.na(Rut)) %>% select(n) %>% apply(2, mean)
+
+proxy_2021_3 %>% filter(glosa1!="SINDICATO INDEPENDIENTE"&glosa1!="SINDICATO INTER EMPRESA") %>% 
+  group_by(Rut) %>% tally() %>% arrange(-n) %>% filter(!is.na(Rut)) %>% 
+  dplyr::summarize(quants = quantile(n, probs = c(0.1,0.2, 0.3,0.4,0.5,0.6,0.7,0.8,0.9)))
+
+proxy_2021_3 %>% filter(glosa1!="SINDICATO INDEPENDIENTE"&glosa1!="SINDICATO INTER EMPRESA") %>% 
+  group_by(Rut) %>% tally() %>% arrange(-n) %>% filter(!is.na(Rut)) %>% 
+  select(n) %>% apply(2,table) %>% apply(2,prop.table)
+
+proxy_2021_3 %>% group_by(Region) %>% summarise(Socios=sum(Socios,na.rm = TRUE),
+                                                Socias=sum(Socias,na.rm = TRUE)) %>% arrange(-Socios,-Socias)
+
+```
+
+
 
 ```{r echo=FALSE}
 wb <- createWorkbook()
@@ -325,7 +366,7 @@ categoria_ocupacion %>%
   mutate(Año=make_date(year=Año)) %>% 
   select(Año,ts1,ts2,ts3) %>% pivot_longer(c(ts1,ts2,ts3)) %>% 
   ggplot(aes(x=Año,y=value,color=name)) + geom_line() + geom_point() +theme_bw() + 
-    labs(title = "Tasas de afiliación sindical en Chile no oficiales (2010-2020)",
+    labs(title = "Figura 2. Tasas de afiliación sindical en Chile no oficiales (2010-2020)",
        x="Tiempo", 
        y = "Sindicatos",
        caption = "Por Repositorio de Estadísticas Sindicales (RES), 
@@ -346,6 +387,9 @@ ggsave(
 
 categoria_ocupacion %>% 
   select(Año,ts1,ts2,ts3,s1,ft_ocupada1,s2,ft_ocupada2,s3,ft_ocupada3) %>% knitr::kable()
+
+writexl::write_xlsx(categoria_ocupacion,"../OUTPUT/Minuta1/tasas.xlsx")
+
 ```
 
 
@@ -364,7 +408,7 @@ g1<-base %>% mutate(FechaConstitucion=ymd(FechaConstitucion) ) %>%
   mutate(FechaConstitucion=make_date(year=ano_constitucion,month=mes_constitucion)) %>% 
   ggplot(aes(x=FechaConstitucion,y=sindicatos_constituidos))+geom_line()+theme_bw() +
     scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE)) + 
-    labs(subtitle = "Sindicatos constituidos cada mes en Chile",
+    labs(subtitle = "Sindicatos constituidos cada mes",
        x="Tiempo", 
        y = "Sindicatos") + 
   geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "red") +
@@ -373,15 +417,15 @@ g1<-base %>% mutate(FechaConstitucion=ymd(FechaConstitucion) ) %>%
 g2<-sindicatos %>% filter(fecha>=ymd("2018-01-01")) %>%   
   ggplot(aes(x=fecha,y=sindicatos))+geom_line()+theme_bw() + 
     scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE)) + 
-    labs(subtitle = "Sindicatos activos en Chile (2019-2021)",
+    labs(subtitle = "Sindicatos activos",
          x="Tiempo", 
        y = "Sindicatos") + 
   geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "red") +
   geom_vline(xintercept = ymd("2020-03-01"),linetype = "dashed", colour = "red")
 
-ggarrange(g1,g2,ncol = 2,common.legend = TRUE) %>% 
-  annotate_figure(top = text_grob("Sindicalismo durante el estallido social y la pandemia (2018-2021)", 
-                                  color = "red", face = "bold", size = 14),
+ggarrange(g2,g1,ncol = 2,common.legend = TRUE) %>% 
+  annotate_figure(top = text_grob("Figura 1. Sindicatos durante el estallido social y la pandemia (2018-2021)", 
+                                  color = "black",  size = 12),
                bottom = text_grob("Por Repositorio de Estadísticas Sindicales (RES), 
        En base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo.
        Verticales de color rojo indican estallido social e inicio de la pandemia en Chile", 
@@ -396,5 +440,18 @@ ggsave(
   width = 30,
   height = 20
 )
+
+tab1.1<-sindicatos %>% filter(fecha>=ymd("2010-01-01"))
+
+tab1.2<-base %>% mutate(FechaConstitucion=ymd(FechaConstitucion) ) %>% 
+  filter(FechaConstitucion>=ymd("2018-01-01")) %>% 
+  mutate(ano_constitucion=year(FechaConstitucion),mes_constitucion=month(FechaConstitucion)) %>% 
+  group_by(ano_constitucion,mes_constitucion) %>% summarise(sindicatos_constituidos=n()) %>% 
+  mutate(FechaConstitucion=make_date(year=ano_constitucion,month=mes_constitucion)) 
+
+writexl::write_xlsx(list("activos"=tab1.1,"constituidos"=tab1.2),"../OUTPUT/Minuta1/tabla1.xlsx")
+
+writexl::write_xlsx(proxy_2021_3,"../OUTPUT/Minuta1/BBDD_sindicatos_activos.xlsx")
+
 ```
 
