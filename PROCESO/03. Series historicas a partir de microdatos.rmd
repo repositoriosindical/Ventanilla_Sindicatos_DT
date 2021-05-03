@@ -368,10 +368,10 @@ categoria_ocupacion %>%
   ggplot(aes(x=Año,y=value,color=name)) + geom_line() + geom_point() +theme_bw() + 
     labs(title = "Figura 2. Tasas de afiliación sindical en Chile no oficiales (2010-2020)",
        x="Tiempo", 
-       y = "Sindicatos",
-       caption = "Por Repositorio de Estadísticas Sindicales (RES), 
-       En base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo y
-       Series históricas de ocupados del Instituto Nacional de Estadística.") +
+       y = "Densidad sindical",
+      caption = "Por Repositorio de Estadísticas Sindicales (RES)
+       en base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo y
+       Series históricas de ocupados del Instituto Nacional de Estadística") +
        scale_color_manual(values=c("red","black","purple")) +
   theme(legend.position = "bottom")
 
@@ -426,8 +426,8 @@ g2<-sindicatos %>% filter(fecha>=ymd("2018-01-01")) %>%
 ggarrange(g2,g1,ncol = 2,common.legend = TRUE) %>% 
   annotate_figure(top = text_grob("Figura 1. Sindicatos durante el estallido social y la pandemia (2018-2021)", 
                                   color = "black",  size = 12),
-               bottom = text_grob("Por Repositorio de Estadísticas Sindicales (RES), 
-       En base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo.
+               bottom = text_grob("Por Repositorio de Estadísticas Sindicales (RES) 
+       en base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo.
        Verticales de color rojo indican estallido social e inicio de la pandemia en Chile", 
        color = "black", hjust = 1, x = 1, size = 8)) 
 
@@ -512,23 +512,25 @@ base %>% mutate(FechaConstitucion=ymd(FechaConstitucion) ) %>%
        y = "Sindicatos") + 
   geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "red") +
   geom_vline(xintercept = ymd("2020-03-01"),linetype = "dashed", colour = "red")
-
+  
+ base$reRegion <- factor(base$Region, levels = c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16), labels = c("I Tarapacá", "II Antofagasta", "III Atacama", "IV Coquimbo", "V Valparaíso", "VI O'Higgins", "VII Maule", "VIII Biobío", "IX Araucanía", "X Los Lagos", "XI Aysén", "XII Magallanes", "XIII Metropolitana", "XIV Los Ríos", "XV Arica y Parinacota", "XVI Ñuble")) # mantengo variable original
 
 base %>% mutate(FechaConstitucion=ymd(FechaConstitucion) ) %>% 
   filter(FechaConstitucion>=ymd("2018-01-01")) %>% 
   mutate(ano_constitucion=year(FechaConstitucion),mes_constitucion=month(FechaConstitucion)) %>% 
-  group_by(ano_constitucion,mes_constitucion,Region) %>% 
+  group_by(ano_constitucion,mes_constitucion,reRegion) %>% 
   summarise(sindicatos_constituidos=n()) %>% 
   mutate(FechaConstitucion=make_date(year=ano_constitucion,month=mes_constitucion)) %>%
   
-  ggplot(aes(x=FechaConstitucion,y=sindicatos_constituidos,color=as.factor(Region)))+geom_line()+
-  facet_wrap(~as.factor(Region),scales = "free")+
+  ggplot(aes(x=FechaConstitucion,y=sindicatos_constituidos,color=as.factor(reRegion)))+geom_line()+
+  facet_wrap(~as.factor(reRegion),scales = "free")+
   theme_bw() +
     scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE)) + 
-    labs(subtitle = "Sindicatos constituidos cada mes por región",
+    labs(subtitle = "Figura 3. Sindicatos constituidos cada mes por región en Chile (2018-2021)",
        x="Tiempo", 
-       y = "Sindicatos",
-       caption = "Repositorio de Estadísticas Sindicales (RES)") + 
+       y = "Sindicatos constituidos",
+       caption = "Por Repositorio de Estadísticas Sindicales (RES) 
+       en base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo") + 
   geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "red") +
   geom_vline(xintercept = ymd("2020-03-01"),linetype = "dashed", colour = "red") + 
   theme(legend.position = "none")
@@ -543,7 +545,5 @@ ggsave(
   width = 30,
   height = 20
 )
-
-
 ```
 
