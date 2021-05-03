@@ -1,0 +1,5 @@
+header-includes:
+  - \usepackage{titling}
+  - \pretitle{\begin{center}
+    \includegraphics[width=1.5in,height=1.5in]{Input/Images/logo_transparent.png}\LARGE\\}
+  - \posttitle{\end{center}

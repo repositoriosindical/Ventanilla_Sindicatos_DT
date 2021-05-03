@@ -15,11 +15,10 @@ output:
     latex_engine: xelatex
     toc_depth: '4'
     fig_caption: yes  
-header-includes:
-  - \usepackage{titling}
-  - \pretitle{\begin{center}
-    \includegraphics[width=1.5in,height=1.5in]{Input/Images/logo_transparent.png}\LARGE\\}
-  - \posttitle{\end{center}}
+fontsize: 12pt
+linkcolor: blue
+urlcolor: blue
+link-citations: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -44,7 +43,7 @@ graficos<-list.files("../OUTPUT/Graficos/Nacionales")
 knitr::include_graphics(c("Input/Images/Getsur.jpeg","Input/Images/logo_sin_fondo.png"))
 ```
 
-$$\\[1in]$$
+$$\\[0.5in]$$
 
 **Como citar:** 
 
@@ -63,9 +62,6 @@ Este registro administrativo de la Dirección del Trabajo es especialmente inter
 En espacios recónditos de su página web ([ventanilla de transparencia](http://tramites.dirtrab.cl/VentanillaTransparencia/Transparencia/RerporteRRLLOrg.aspx)), la Dirección del Trabajo proporciona de manera actualizada un microdato con el detalle de los sindicatos constituidos, activos y en receso, entre 1920 y abril de 2021. En el presente informe se analizan los datos sindicales de la mencionada ventanilla de transparencia de la Dirección del Trabajo, con el objeto de construir series históricas de la trayectoria de sindicatos y afiliados/as entre los últimos tres años, desde 2018 a 2021. En específico, el microdato presenta información sobre el número de socias y socios, fecha de constitución del sindicato, estado, fecha de último registro, tipo de sindicato, rut de la empresa a la que pertenece el sindicato, entre otros. La base se actualiza diariamente y para este informe se descargó con fecha 14 de abril de 2021, limitando su análisis hasta el 31 de marzo del mismo año. Este microdato tiene la ventaja de entregar información detallada, actualizada y con una larga data sobre las características de cada sindicato que ha estado activo en Chile, a diferencia de las estimaciones generales oficiales ya comentadas. Aún así, los datos deben mirarse con mesura, en tanto si bien tienen las ventajas mencionadas, también presentan posibles contradicciones y sesgos, como la cantidad de socios/as del sindicato (ver apartado metodológico final para más detalle).
 
 El informe se organiza en tres grandes apartados: primero, se realiza un análisis de los sindicatos en las últimas coyuntura del estallido social y la pandemia por COVID-19 (2018-2021). Luego, se presenta una estimación actualizada, aunque no oficial, de las tasas de sindicalización en Chile para los últimos 10 años, siendo especialmente relevante la de 2020, que aún no ha sido publicada oficialmente. Finalmente, se presenta un apartado metodológico sobre el tratamiento realizado al microdato de la ventanilla de transparencia de la Dirección del Trabajo, en donde dejamos el vínculo del código con el que se puede reproducir el proceso y el presente informe.
-
-
-\newpage
 
 # Sindicatos activos y constituidos en los últimos tres años
 
@@ -123,10 +119,6 @@ TS2 = Población Afiliada / Total de ocupados (excluye asalariados s.público)*1
 
 TS3 = Población Afiliada (excluye afiliados independientes) / Total de ocupados (excluye asalariados s.público)*100
 
-
-
-
-\newpage
 
 # Anexos
 
