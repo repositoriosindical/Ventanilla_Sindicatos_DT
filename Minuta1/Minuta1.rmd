@@ -1,12 +1,11 @@
 ---
 title: |
- | \vspace{6cm} Minuta N°1:
+ | \vspace{3cm} Minuta N°1:
  | Sindicatos en la coyuntura del estallido social y la pandemia (2018-2021)
 subtitle: |
  Una descripción cuantitativa en base a registros administrativos públicos
 author: |
- | \vspace{6cm} 
- | Repositorio de Estadísticas Sindicales (RES)
+ | \vspace{3cm} 
  | Nicolás Ratto, Andreas Lafferte y Felipe Marchant
 date: |
  | Primero de mayo de 2021
@@ -15,6 +14,10 @@ output:
     latex_engine: xelatex
     toc_depth: '4'
     fig_caption: yes  
+header-includes:
+- \usepackage{titling}
+- \pretitle{\begin{center}\LARGE\includegraphics[width=12cm]{Input/Images/logo5.jpg}\\[\bigskipamount]}
+- \posttitle{\end{center}}
 fontsize: 12pt
 linkcolor: blue
 urlcolor: blue
@@ -97,8 +100,6 @@ knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/","tasaafiliacions
 Observando la Figura 2, la cual gráfica la evolución de las tres tasas de sindicalización desde 2010 a 2020, se demuestra un crecimiento estable de la afiliación sindical, con algunos años de mayor auge que otros. Sin embargo, destaca el aumento en las 3 tasas de sindicalización en 2020 respecto de 2019. Esto en ningún caso debe interpretarse como una revitalización sindical, en tanto la variación se explica por la fuerte caída del empleo y la caída en la tasa de participación de la fuerza de trabajo, en el año 2020 por efecto de la pandemia por Covid-19. Como se verá en el siguiente apartado, en 2020 el número de sindicatos y afiliados ha disminuido. 
 
 
-\newpage
-
 # Apartado metodológico
 
 En términos generales, lo primero que se realizó fue descargar manualmente la base de datos de organizaciones sindicales de la ["ventanilla de transparencia" de la Dirección del Trabajo (DT)](http://tramites.dirtrab.cl/VentanillaTransparencia/Transparencia/RerporteRRLLOrg.aspx). Esta base fue descargada por última vez el 10 de abril del año 2021, por lo que la categorización de los estados de los sindicatos y la definición del número de afiliados/as tienen como punto de referencia esta fecha o, el último trámite realizado por las organizaciones en la Dirección del Trabajo. La base descargada contenía el registro actualizado de 38.967 organizaciones sindicales constituidas en Chile desde 1900 hasta 2021 (38.956 organizaciones al quitar los casos duplicados). 
@@ -129,18 +130,15 @@ knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/","Constituidos_re
 
 # Próximas minutas
 
-+ Una mirada histórica a los registros administrativos de la Dirección del Trabajo sobre sindicatos y afiliación sindical (1920-2019)
++ Una mirada histórica a los registros de la Dirección del Trabajo sobre sindicatos (1920-2019)
 
-+ Paralelismo sindical en las empresas chilenas. ¿Hacia una creciente fragmentación del trabajo?
++ Paralelismo sindical en las empresas chilenas. ¿Hacia una creciente fragmentación?
 
 + Evolución sindical en la empresa. Aplicación / función para caracterizar las relaciones laborales en estudios de caso. 
 
-+ Nuevas estimaciones de las tasas de afiliación sindical en Chile (2010-2018), con Anuarios de la Dirección del Trabajo y la Encuesta Nacional de Empleo calibrada al 2017.
++ Nuevas estimaciones de las tasas de afiliación sindical en Chile (2010-2018), usando DT y Encuesta Nacional de Empleo calibrada al 2017.
 
 + No todo es desorganización. Evolución de las tasas de sindicalización en las grandes empresas chilenas. Encla 1998 - 2019.
-
-+ Estimación de la sindicalización con la Encuesta Nacional de Empleo (2018-2021). 
-
 
 
 

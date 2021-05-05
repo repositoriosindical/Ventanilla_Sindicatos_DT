@@ -23,6 +23,8 @@ library(tidyverse)
 library(lubridate)
 library(openxlsx)
 
+colores_res<-c("#090909","#E41657","#9D0CEF","#626262")
+
 ```
 
 # 1. Cargar el RData
@@ -372,7 +374,7 @@ categoria_ocupacion %>%
       caption = "Por Repositorio de Estadísticas Sindicales (RES)
        en base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo y
        Series históricas de ocupados del Instituto Nacional de Estadística") +
-       scale_color_manual(values=c("red","black","purple")) +
+       scale_color_manual(values=colores_res) +
   theme(legend.position = "bottom")
 
 ggsave(
@@ -381,8 +383,8 @@ ggsave(
   device = "png",
   dpi = "retina",
   units = "cm",
-  width = 25,
-  height = 20
+  width = 20,
+  height = 15
 )
 
 categoria_ocupacion %>% 
@@ -408,20 +410,20 @@ g1<-base %>% mutate(FechaConstitucion=ymd(FechaConstitucion) ) %>%
   mutate(FechaConstitucion=make_date(year=ano_constitucion,month=mes_constitucion)) %>% 
   ggplot(aes(x=FechaConstitucion,y=sindicatos_constituidos))+geom_line()+theme_bw() +
     scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE)) + 
-    labs(subtitle = "Sindicatos constituidos cada mes",
+    labs(subtitle = "Número de sindicatos constituidos cada mes",
        x="Tiempo", 
        y = "Sindicatos") + 
-  geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "red") +
-  geom_vline(xintercept = ymd("2020-03-01"),linetype = "dashed", colour = "red")
+  geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "#E41657") +
+  geom_vline(xintercept = ymd("2020-03-01"),linetype = "dashed", colour = "#E41657")
 
 g2<-sindicatos %>% filter(fecha>=ymd("2018-01-01")) %>%   
   ggplot(aes(x=fecha,y=sindicatos))+geom_line()+theme_bw() + 
     scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE)) + 
-    labs(subtitle = "Sindicatos activos",
+    labs(subtitle = "Número de sindicatos activos cada mes",
          x="Tiempo", 
        y = "Sindicatos") + 
-  geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "red") +
-  geom_vline(xintercept = ymd("2020-03-01"),linetype = "dashed", colour = "red")
+  geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "#E41657") +
+  geom_vline(xintercept = ymd("2020-03-01"),linetype = "dashed", colour = "#E41657")
 
 ggarrange(g2,g1,ncol = 2,common.legend = TRUE) %>% 
   annotate_figure(top = text_grob("Figura 1. Sindicatos durante el estallido social y la pandemia (2018-2021)", 
@@ -437,8 +439,8 @@ ggsave(
   device = "png",
   dpi = "retina",
   units = "cm",
-  width = 30,
-  height = 20
+  width = 20,
+  height = 15
 )
 
 tab1.1<-sindicatos %>% filter(fecha>=ymd("2010-01-01"))
@@ -526,15 +528,15 @@ base %>% mutate(FechaConstitucion=ymd(FechaConstitucion) ) %>%
   facet_wrap(~as.factor(reRegion),scales = "free")+
   theme_bw() +
     scale_y_continuous(labels=function(x) format(x, big.mark = ".", scientific = FALSE)) + 
-    labs(subtitle = "Figura 3. Sindicatos constituidos cada mes por región en Chile (2018-2021)",
+    labs(subtitle = "Figura 3. Número de sindicatos constituidos cada mes por región (2018-2021)",
        x="Tiempo", 
        y = "Sindicatos constituidos",
        caption = "Por Repositorio de Estadísticas Sindicales (RES) 
        en base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo") + 
-  geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "red") +
-  geom_vline(xintercept = ymd("2020-03-01"),linetype = "dashed", colour = "red") + 
+  scale_color_manual(values=c(rep(colores_res,4))) +
+  geom_vline(xintercept = ymd("2019-10-01"),linetype = "dashed", colour = "#E41657") +
+  geom_vline(xintercept = ymd("2020-03-01"),linetype = "dashed", colour = "#E41657") + 
   theme(legend.position = "none")
-
 
 ggsave(
   plot = last_plot(),
@@ -542,8 +544,8 @@ ggsave(
   device = "png",
   dpi = "retina",
   units = "cm",
-  width = 30,
-  height = 20
+  width = 20,
+  height = 15
 )
 ```
 
