@@ -1,6 +1,6 @@
 ---
 title: |
- | \vspace{3cm} Minuta N°1:
+ | \vspace{1cm} Minuta N°1:
  | Sindicatos en la coyuntura del estallido social y la pandemia (2018-2021)
 subtitle: |
  Una descripción cuantitativa en base a registros administrativos públicos
@@ -16,7 +16,7 @@ output:
     fig_caption: yes  
 header-includes:
 - \usepackage{titling}
-- \pretitle{\begin{center}\LARGE\includegraphics[width=12cm]{Input/Images/logo5.jpg}\\[\bigskipamount]}
+- \pretitle{\begin{center}\LARGE\includegraphics[width=8cm]{Input/Images/RES01.png}\\[\bigskipamount]}
 - \posttitle{\end{center}}
 fontsize: 12pt
 linkcolor: blue
