@@ -8,12 +8,13 @@ author: |
  | \vspace{3cm} 
  | Nicolás Ratto, Andreas Lafferte y Felipe Marchant
 date: |
- | Primero de mayo de 2021
+ | Mayo de 2021
 output:
   pdf_document:
     latex_engine: xelatex
     toc_depth: '4'
-    fig_caption: yes  
+    fig_caption: yes 
+#    number_sections: true
 header-includes:
 - \usepackage{titling}
 - \pretitle{\begin{center}\LARGE\includegraphics[width=8cm]{Input/Images/RES01.png}\\[\bigskipamount]}
@@ -28,9 +29,11 @@ link-citations: yes
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+\thispagestyle{empty} 
+
 \newpage
 
-# Sobre el documento
+# Resumen
 
 El documento analiza los datos de la ventanilla de transparencia de la Dirección del Trabajo, con los cuales se construyen series históricas sobre la trayectoria de sindicatos y afiliados/as desde enero de 2018 a marzo de 2021. De esta forma se espera observar la formación y desarrollo sindical en el marco del estallido social y la pandemia del Covid-19. 
 
@@ -38,7 +41,7 @@ El documento analiza los datos de la ventanilla de transparencia de la Direcció
 
 El Repositorio de Estadísticas Sindicales busca ordenar y centralizar distintos datos sobre la trayectoria y el estado actual del sindicalismo en el país. Esto, con el objeto de brindarle oportunamente a las organizaciones sindicales y a otros estudiosos/as del trabajo información actualizada, de confianza y reproducible.
 
-El observatorio es una iniciativa levantada, sostenida y financiada por investigadores del trabajo independientes y parte de organizaciones de la sociedad civil afines a la temática, como [CIPSTRA](https://cipstra.cl/) y [GETSUR](http://www.getsur.cl/). Cualquiera puede colaborar corrigiendo información, proponiendo medidas alternativas o aportando con nuevos datos. El trabajo es abierto y colaborativo en el Github del [Repositorio de Estadísticas Sindicales](https://github.com/ObservatorioSindical), o escribiéndo al mail de las organizaciones: <cipstra@gmail.com>.
+El observatorio es una iniciativa levantada, sostenida y financiada por investigadores del trabajo independientes y parte de organizaciones de la sociedad civil afines a la temática, como [CIPSTRA](https://cipstra.cl/) y [GETSUR](http://www.getsur.cl/). Cualquiera puede colaborar corrigiendo información, proponiendo medidas alternativas o aportando con nuevos datos. El trabajo es abierto y colaborativo en el Github del [Repositorio de Estadísticas Sindicales](https://github.com/ObservatorioSindical), o contactando a las organizaciones.
 
 
 ```{r, echo=FALSE, fig.align='center', out.width=c("25%","50%"), fig.show='hold'}
@@ -50,7 +53,7 @@ $$\\[0.5in]$$
 
 **Como citar:** 
 
-Ratto, N., Lafferte, A., y Marchant, F. (2021) Minuta N°1: *Sindicatos en la coyuntura del estallido social y la pandemia (2018-2021).* Una descripción cuantitativa en base a registros administrativos públicos. Repositorio de Estadísticas Sindicales (RES). Disponible en: https://repositoriosindical.netlify.app/ 
+Ratto, N., Lafferte, A., y Marchant, F. (2021) Minuta N°1: *Sindicatos en la coyuntura del estallido social y la pandemia (2018-2021). Una descripción cuantitativa en base a registros administrativos públicos*. Repositorio de Estadísticas Sindicales (RES). Disponible en: https://repositoriosindical.netlify.app/minutas/ 
 
 
 
@@ -62,7 +65,7 @@ Conocer el estado actual y la evolución de la formación sindical en Chile resu
 
 Este registro administrativo de la Dirección del Trabajo es especialmente interesante, en tanto es la institución que principalmente produce y centraliza los datos sobre sindicatos en Chile, al ser el lugar en donde los sindicatos deben registrarse para constituirse como tales, además de entregar información sobre sus elecciones internas, contratos colectivos y conflictos huelguísticos para mantener su estado de “activos”. En este sentido, los datos que analizamos abarcan a todas las organizaciones sindicales en Chile y son los que, una vez depurados, la institución utiliza para publicar en sus Compendios y Anuarios las tasas de sindicalización oficiales y otros datos sobre sindicatos. Sin embargo, en este proceso la organización demora aproximadamente dos años, no quedando a disposición de la ciudadanía el microdato con los que elabora sus informes.
 
-En espacios recónditos de su página web ([ventanilla de transparencia](http://tramites.dirtrab.cl/VentanillaTransparencia/Transparencia/RerporteRRLLOrg.aspx)), la Dirección del Trabajo proporciona de manera actualizada un microdato con el detalle de los sindicatos constituidos, activos y en receso, entre 1920 y abril de 2021. En el presente informe se analizan los datos sindicales de la mencionada ventanilla de transparencia de la Dirección del Trabajo, con el objeto de construir series históricas de la trayectoria de sindicatos y afiliados/as entre los últimos tres años, desde 2018 a 2021. En específico, el microdato presenta información sobre el número de socias y socios, fecha de constitución del sindicato, estado, fecha de último registro, tipo de sindicato, rut de la empresa a la que pertenece el sindicato, entre otros. La base se actualiza diariamente y para este informe se descargó con fecha 14 de abril de 2021, limitando su análisis hasta el 31 de marzo del mismo año. Este microdato tiene la ventaja de entregar información detallada, actualizada y con una larga data sobre las características de cada sindicato que ha estado activo en Chile, a diferencia de las estimaciones generales oficiales ya comentadas. Aún así, los datos deben mirarse con mesura, en tanto si bien tienen las ventajas mencionadas, también presentan posibles contradicciones y sesgos, como la cantidad de socios/as del sindicato (ver apartado metodológico final para más detalle).
+En espacios recónditos de su página web ([ventanilla de transparencia](http://tramites.dirtrab.cl/VentanillaTransparencia/Transparencia/RerporteRRLLOrg.aspx)), la Dirección del Trabajo proporciona de manera actualizada un microdato con el detalle de los sindicatos constituidos, activos y en receso, entre 1920 y abril de 2021. En específico, el microdato presenta información sobre el número de socias y socios, fecha de constitución del sindicato, estado, fecha de último registro, tipo de sindicato, rut de la empresa a la que pertenece el sindicato, entre otros. La base se actualiza diariamente y para este informe se descargó con fecha 14 de abril de 2021, limitando su análisis hasta el 31 de marzo del mismo año. Este microdato tiene la ventaja de entregar información detallada, actualizada y con una larga data sobre las características de cada sindicato que ha estado activo en Chile, a diferencia de las estimaciones generales oficiales ya comentadas. Aún así, los datos deben mirarse con mesura, en tanto si bien tienen las ventajas mencionadas, también presentan posibles contradicciones y sesgos, como la cantidad de socios/as del sindicato (ver apartado metodológico final para más detalle).
 
 El informe se organiza en tres grandes apartados: primero, se realiza un análisis de los sindicatos en las últimas coyuntura del estallido social y la pandemia por COVID-19 (2018-2021). Luego, se presenta una estimación actualizada, aunque no oficial, de las tasas de sindicalización en Chile para los últimos 10 años, siendo especialmente relevante la de 2020, que aún no ha sido publicada oficialmente. Finalmente, se presenta un apartado metodológico sobre el tratamiento realizado al microdato de la ventanilla de transparencia de la Dirección del Trabajo, en donde dejamos el vínculo del código con el que se puede reproducir el proceso y el presente informe.
 
@@ -108,7 +111,7 @@ Los sindicatos vienen clasificados según su estado de "activo", "receso", "cadu
 
 El uso de esta fuente de información sindical, sin embargo, no solo permite obtener el dato actualizado a la fecha de descarga de los sindicatos activos en Chile, logrando un monitoreo en tiempo real de una parte de las relaciones laborales en el país; sino que también permite tener obtener los datos de sindicatos activos para antes del año 1990, cuestión que ningún compendio o anuario de la Dirección del Trabajo registra. 
 
-Luego de la descarga, se generaron microbases para cada mes (t) desde enero de 1920 a marzo de 2021 (1215 bases). Esto se hace mediante una función  detallada en el script 01, en el apartado "III. Función para hacer microbases para todo el periodo". Cada microbase tiene como supuesto el considerar solamente a aquellos sindicatos que se encontraban activos en el año-mes (`t`) de cada microbase. Para cada tiempo (`t`) se filtran aquellos sindicatos activos en 2021 que se constituyeron entre el primer día y el último de `t`, y aquellos sindicatos no activos en 2021 pero cuya última fecha de elección de directiva ocurrió después del último día de `t`. Posteriormente se calcula para cada tiempo (t) el total de sindicatos activos y de trabajadores afiliados/as (script 03). Los resultados se consolidan en tabulados, se grafican y se exportan. 
+Luego de la descarga manual, se generaron microbases para cada mes (t) desde enero de 1920 a marzo de 2021 (1215 bases) [(ver códigos)](https://github.com/nicolasrattor/Ventanilla_Sindicatos_DT/tree/main/PROCESO). Cada microbase tiene como supuesto el considerar solamente a aquellos sindicatos que se encontraban activos en el año-mes (`t`) de cada microbase. Para cada tiempo (`t`) se filtran aquellos sindicatos activos en 2021 que se constituyeron entre el primer día y el último de `t`, y aquellos sindicatos no activos en 2021 pero cuya última fecha de elección de directiva ocurrió después del último día de `t`. Posteriormente se calcula para cada tiempo (t) el total de sindicatos activos y de trabajadores afiliados/as (script 03). Los resultados se consolidan en tabulados, se grafican y se exportan. 
 
 Sobre la calidad del dato de trabajadores/as afiliados: este no es del todo exacto, ya que el número de afiliados es el registrado por la Dirección del Trabajo en el último trámite realizado por el sindicato. Por tanto, si un sindicato en 2015 tiene 5000 socios, esos 5000 socios corresponden al último periodo registrado por la DT para ese sindicato, probablemente 2017-2020 en ese caso. Para cada periodo o tiempo `t` hay una sub o sobreestimación en el número de afiliados/as de cada sindicato. Por ende, es necesario tomar este dato como un proxy, cuyo ajuste con la realidad es probable que disminuya mientras más nos alejamos de la fecha en la que es descargada la base de datos. 
 
@@ -132,13 +135,15 @@ knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/","Constituidos_re
 
 + Una mirada histórica a los registros de la Dirección del Trabajo sobre sindicatos (1920-2019)
 
++ La tasa de afiliación sindical en Chile (1930-2010). Distintas estimaciones y una propuesta de empalme
+
 + Paralelismo sindical en las empresas chilenas. ¿Hacia una creciente fragmentación?
 
-+ Evolución sindical en la empresa. Aplicación / función para caracterizar las relaciones laborales en estudios de caso. 
++ Evolución sindical en la empresa. Aplicación / función para caracterizar las relaciones laborales en estudios de caso
 
-+ Nuevas estimaciones de las tasas de afiliación sindical en Chile (2010-2018), usando DT y Encuesta Nacional de Empleo calibrada al 2017.
++ Nuevas estimaciones de las tasas de afiliación sindical en Chile (2010-2018), usando DT y Encuesta Nacional de Empleo calibrada al 2017
 
-+ No todo es desorganización. Evolución de las tasas de sindicalización en las grandes empresas chilenas. Encla 1998 - 2019.
++ No todo es desorganización. Evolución de las tasas de sindicalización en las grandes empresas chilenas. Encla 1998 - 2019
 
 
 
