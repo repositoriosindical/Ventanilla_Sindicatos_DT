@@ -8,7 +8,7 @@ author: |
  | \vspace{3cm} 
  | Nicolás Ratto, Andreas Lafferte y Felipe Marchant
 date: |
- | Mayo de 2021
+ | Junio de 2021
 output:
   pdf_document:
     latex_engine: xelatex
@@ -133,15 +133,17 @@ knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/","Constituidos_re
 
 # Próximas minutas
 
-+ Una mirada histórica a los registros de la Dirección del Trabajo sobre sindicatos (1920-2019)
++ Tasas de afiliación y concentración sindical en Chile, 1930-2010. Distintas estimaciones y propuesta de empalme
 
-+ La tasa de afiliación sindical en Chile (1930-2010). Distintas estimaciones y una propuesta de empalme
++ Una mirada histórica a los registros de la Dirección del Trabajo sobre sindicatos, 1930-2021
 
-+ Paralelismo sindical en las empresas chilenas. ¿Hacia una creciente fragmentación?
++ Afiliación, elecciones y presencia partidaria en la Central Únitaria de Trabajadores, 1988-2021
 
-+ Evolución sindical en la empresa. Aplicación / función para caracterizar las relaciones laborales en estudios de caso
++ Federaciones y Confederaciones del sector público y privado en Chile. Series 1930-2020
 
-+ Nuevas estimaciones de las tasas de afiliación sindical en Chile (2010-2018), usando DT y Encuesta Nacional de Empleo calibrada al 2017
++ Paralelismo sindical en las empresas chilenas, 1990-2021. ¿Hacia una creciente fragmentación?
+
++ Evolución sindical en la empresa. Función para caracterizar las relaciones laborales en estudios de caso. Ejemplo para 8 grandes retailers. 
 
 + No todo es desorganización. Evolución de las tasas de sindicalización en las grandes empresas chilenas. Encla 1998 - 2019
 
