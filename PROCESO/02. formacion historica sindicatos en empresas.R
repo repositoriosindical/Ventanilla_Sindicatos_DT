@@ -1,4 +1,5 @@
 
+load(file="../INPUT/basesDT.Rdata")
 
 #### EJEMPLOS CON EMPRESAS PARTICULARES ####
 
@@ -30,6 +31,14 @@ for(i in 1:nrow(sindicatos_lider)){
                  str_detect(Empresa,"LIDER|lider|Lider|WALMART|Walmart|walmart|WAL-MART|EKONO|Ekono|ekono")) %>% nrow()
   
 }
+
+i<-372
+nombres_sindicatos_empresas<-get(
+  fecha[i,] %>% mutate(base=paste0("proxy_",ano,"_",mes)) %>% select(base) %>% as.character()
+) %>% filter(str_detect(nombre,"LIDER|lider|Lider|WALMART|Walmart|walmart|WAL-MART|EKONO|Ekono|ekono")|
+               str_detect(Empresa,"LIDER|lider|Lider|WALMART|Walmart|walmart|WAL-MART|EKONO|Ekono|ekono"))
+
+writexl::write_xlsx(nombres_sindicatos_empresas,"sindicatos_walmart_2020.xlsx")
 
 sindicatos_lider<-sindicatos_lider %>% cbind(fecha) %>% mutate(fecha=ymd(paste0(ano,"-",mes,"-01")))
 

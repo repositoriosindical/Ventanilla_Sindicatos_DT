@@ -131,21 +131,5 @@ knitr::include_graphics(paste0("../OUTPUT/Graficos/Nacionales/","Constituidos_re
 ```
 
 
-# Próximas minutas
-
-+ Tasas de afiliación y concentración sindical en Chile, 1930-2010. Distintas estimaciones y propuesta de empalme
-
-+ Una mirada histórica a los registros de la Dirección del Trabajo sobre sindicatos, 1930-2021
-
-+ Afiliación, elecciones y presencia partidaria en la Central Únitaria de Trabajadores, 1988-2021
-
-+ Federaciones y Confederaciones del sector público y privado en Chile. Series 1930-2020
-
-+ Paralelismo sindical en las empresas chilenas, 1990-2021. ¿Hacia una creciente fragmentación?
-
-+ Evolución sindical en la empresa. Función para caracterizar las relaciones laborales en estudios de caso. Ejemplo para 8 grandes retailers. 
-
-+ No todo es desorganización. Evolución de las tasas de sindicalización en las grandes empresas chilenas. Encla 1998 - 2019
-
 
 

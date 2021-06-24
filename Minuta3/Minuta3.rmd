@@ -1,6 +1,6 @@
 ---
 title: |
- | \vspace{6cm} Minuta N°2:
+ | \vspace{6cm} Minuta N°3:
  | Una mirada histórica cuantativa a la trayectoria de los sindicatos y la afiliación sindical en Chile (1920-2019)
 subtitle: 'Análisis en base a registros administrativos de la Dirección del Trabajo púbicos'
 author: |
@@ -8,18 +8,21 @@ author: |
  | Repositorio de Estadísticas Sindicales (RES)
  | Nicolás Ratto, Andreas Lafferte y Felipe Marchant
 date: |
- | 15 de mayo de 2021,
- | versión 1.0
+ | Julio de 2021
 output:
   pdf_document:
     latex_engine: xelatex
     toc_depth: '4'
-    fig_caption: yes  
+    fig_caption: yes 
+#    number_sections: true
 header-includes:
-  - \usepackage{titling}
-  - \pretitle{\begin{center}
-    \includegraphics[width=2in,height=2in]{Input/Images/logo.png}\LARGE\\}
-  - \posttitle{\end{center}}
+- \usepackage{titling}
+- \pretitle{\begin{center}\LARGE\includegraphics[width=8cm]{Input/Images/RES01.png}\\[\bigskipamount]}
+- \posttitle{\end{center}}
+fontsize: 12pt
+linkcolor: blue
+urlcolor: blue
+link-citations: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -27,6 +30,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 \newpage
+
+# EN DESARROLLO. 
 
 # Sobre el documento
 
@@ -47,7 +52,7 @@ $$\\[1in]$$
 
 **Como citar:** 
 
-Autor et. al. (2021) Minuta N°1: *Análisis de la ventanilla sindical transparencia de la Dirección del Trabajo*. Repositorio de Estadísticas Sindicales (RES). Disponible en: https://repositoriosindical.netlify.app/ 
+Autor et. al. (2021) Minuta N°3: *Análisis de la ventanilla sindical transparencia de la Dirección del Trabajo*. Repositorio de Estadísticas Sindicales (RES). Disponible en: https://repositoriosindical.netlify.app/ 
 
 
 
@@ -135,13 +140,6 @@ Henriquez, R. (2017). Sindicatos interempresa en Chile. Panorámica actual y acc
 Riquelme, V., & Abarca, M. (2015). Más mujeres en los sindicatos. Sectores con alta sindicalización femenina. Aporte al debate N°33. Documentación, Publicaciones y Estadísticas. Dirección del Trabajo. Gobierno de Chile. http://www.dt.gob.cl/documentacion/1612/w3-article-106799.html
 
 Vallejos, R. Á. (2012). El plan laboral y la negociación colectiva: ¿origen de un nuevo sindicalismo en Chile? 1979-1985. Boletín del Instituto de Historia Argentina y Americana Dr. Emilio Ravignani, 35/6.
-
-
-
-
-$$\\[1in]$$
-
-# Próximas minutas
 
 
 
