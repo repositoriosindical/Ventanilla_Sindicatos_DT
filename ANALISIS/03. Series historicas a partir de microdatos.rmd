@@ -1,5 +1,5 @@
 ---
-title: "Elementos gráficos para Minuta N°1. Análisis de datos de la ventanilla transparencia de la Dirección del Trabajo."
+title: "Elementos gráficos para Minuta N°1 y Minuta N°2. Análisis de datos de la ventanilla transparencia de la Dirección del Trabajo."
 description: |
   En el documento se analizan los datos sindicales de la ventanilla de transparencia de la Dirección del Trabajo, con el objeto de construir series históricas de la trayectoria de sindicatos y afiliados/as desde 1920 a 2021. Este es el documento de análisis de la información, la versión estilizada y publicada se encuentre en el siguiente link: <https://repositoriosindical.netlify.app/>
 author:

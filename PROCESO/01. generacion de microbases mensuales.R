@@ -9,7 +9,7 @@ library(lubridate)
 
 #### I Con esta función se crea una micro base con un proxy de sindicatos activos para un periodo de referencia ####
 
-base<-read_excel("../INPUT/archivo_sindicatos_limpia.xlsx")
+base<-read_excel("INPUT/archivo_sindicatos_limpia.xlsx")
 
 ano<-"2016"
 mes<-"01"
@@ -70,5 +70,5 @@ get(
 
 ## guardar bases producidas
 bases<-ls(pattern = "proxy")
-save(list=bases,file="../INPUT/basesDT.Rdata")
+save(list=bases,file="INPUT/basesDT.Rdata")
 

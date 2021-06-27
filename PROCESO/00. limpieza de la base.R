@@ -10,8 +10,7 @@ library(tidyverse)
 library(lubridate)
 
 ## cargar bases.
-base<-read_excel("../INPUT/archivo_sindicatos_20210410.xlsx")
-#base2<-read_excel("../INPUT/archivo_func_centrales_conf_20210120.xlsx")
+base<-read_excel("INPUT/archivo_sindicatos_20210410.xlsx")
 
 ## Función para extraer solo números (ignorando dígito verificador)
 library(stringr)
@@ -65,6 +64,6 @@ library(openxlsx)
 wb <- createWorkbook()
 addWorksheet(wb, sheetName = "pestaña1", gridLines = TRUE)
 writeData(wb = wb, sheet = "pestaña1", x = base)
-saveWorkbook(wb = wb, file = "../INPUT/archivo_sindicatos_limpia.xlsx", 
+saveWorkbook(wb = wb, file = "INPUT/archivo_sindicatos_limpia.xlsx", 
              overwrite = TRUE)
 

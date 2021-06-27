@@ -1,0 +1,42 @@
+---
+title: "Elementos gráficos para Minuta N°3. Paralelismo sindical"
+description: |
+author:
+  - name: Nicolás Ratto
+    affiliation: Repositorio de Estadísticas Sindicales
+    affiliation_url: https://repositoriosindical.netlify.app/
+date: "`r Sys.Date()`"
+journal: "Repositorio de Estadísticas Sindicales"
+citation_url: https://repositoriosindical.netlify.app/
+output: 
+ distill::distill_article:
+   toc: true
+   toc_depth: 1
+   toc_float: TRUE
+   code_folding: hide
+---
+
+```{r warning=FALSE,message=FALSE}
+library(readxl)
+library(tidyverse)
+library(lubridate)
+library(openxlsx)
+
+colores_res<-c("#090909","#E41657","#9D0CEF","#626262")
+
+```
+
+# 1. Cargar el RData
+
+Se cargan las micro bases elaboradas en el script `01. generacion de microbases mensuales`.
+
+```{r}
+load("../INPUT/basesDT.Rdata")
+```
+
+# 2. Definir periodo de análisis
+
+```{r}
+fecha<-data.frame(ano=c(rep(1920:2020,each=12),rep(2021,each=3)),
+                  mes=c(rep(1:12,(2020-1920+1)),1,2,3))
+```
