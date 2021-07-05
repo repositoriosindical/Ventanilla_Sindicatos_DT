@@ -12,6 +12,4 @@ Se analizan los datos de la ventanilla de transparencia de la Dirección del Tra
 
 ## En desarrollo
 
-Con estos mismos datos se está elaborando una [aplicación para contar sindicatos en empresas](https://nicolasrattor.shinyapps.io/sindicatos_empresas/).
-
 Con estos mismos datos se están elaborando otras minutas del Repositorio de Estadísticas Sindicales (RES). Una que calcula el número de sindicatos y afiliados en Chile para el periodo 1920-2010 (Minuta N°3) y otra sobre paralelismo sindical en las empresas.
