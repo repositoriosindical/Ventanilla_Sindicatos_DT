@@ -1,5 +1,5 @@
 ---
-title: "Elementos gráficos para Minuta N°1 y Minuta N°2. Análisis de datos de la ventanilla transparencia de la Dirección del Trabajo."
+title: "Elementos gráficos para Minuta N°1 y Minuta N°3. Análisis de datos de la ventanilla transparencia de la Dirección del Trabajo."
 description: |
   En el documento se analizan los datos sindicales de la ventanilla de transparencia de la Dirección del Trabajo, con el objeto de construir series históricas de la trayectoria de sindicatos y afiliados/as desde 1920 a 2021. Este es el documento de análisis de la información, la versión estilizada y publicada se encuentre en el siguiente link: <https://repositoriosindical.netlify.app/>
 author:
@@ -24,6 +24,7 @@ library(lubridate)
 library(openxlsx)
 
 colores_res<-c("#090909","#E41657","#9D0CEF","#626262")
+colores_res_6<-c("#090909","#E41657","#9D0CEF","#626262","gray","darkgreen")
 
 ```
 
@@ -391,8 +392,42 @@ categoria_ocupacion %>%
   select(Año,ts1,ts2,ts3,s1,ft_ocupada1,s2,ft_ocupada2,s3,ft_ocupada3) %>% knitr::kable()
 
 writexl::write_xlsx(categoria_ocupacion,"../OUTPUT/Minuta1/tasas.xlsx")
-
+#categoria_ocupacion<-read_excel("../OUTPUT/Minuta1/tasas.xlsx")
 ```
+
+Las tasas del periodo 2010-2019 se pueden comparar con las "oficiales" publicadas por la DT en sus Anuarios^[Se debe tener en consideración que para antes de 2019 la DT utilizó denominadores desactualizados para el cálculo de las tasas]. 
+
+```{r}
+dt<-read.xlsx("https://github.com/nicolasrattor/COMPENDIOS_DT/raw/main/Output/Cuadros/1.%20OOSS/cuadro1.xlsx",
+              sheet = 1,colNames = FALSE)
+dt<-dt[dt$X1>=2010,c("X1","X5","X7","X10")]
+colnames(dt)<-c("Año","ts1_DT","ts2_DT","ts3_DT")
+categoria_ocupacion<-merge(dt,categoria_ocupacion,by=c("Año"),all.y=TRUE)
+
+categoria_ocupacion %>% 
+  mutate(Año=make_date(year=Año)) %>% 
+  select(Año,ts1,ts2,ts3,ts1_DT,ts2_DT,ts3_DT) %>% pivot_longer(c(ts1,ts2,ts3,ts1_DT,ts2_DT,ts3_DT)) %>% 
+  ggplot(aes(x=Año,y=value,color=name)) + geom_line() + geom_point() +theme_bw() + 
+    labs(title = "Figura 2. Tasas de afiliación sindical en Chile DT y no oficiales (2010-2020)",
+       x="Tiempo", 
+       y = "Densidad sindical",
+      caption = "Por Repositorio de Estadísticas Sindicales (RES)
+       en base a datos de la Ventanilla Sindical Transparencia Dirección del Trabajo y
+       Series históricas de ocupados del Instituto Nacional de Estadística") +
+       scale_color_manual(values=colores_res_6) +
+  theme(legend.position = "bottom")
+
+ggsave(
+  plot = last_plot(),
+  filename = "../OUTPUT/Graficos/Nacionales/tasaafiliacionsindical_nooficiales_y_dt.png",
+  device = "png",
+  dpi = "retina",
+  units = "cm",
+  width = 20,
+  height = 15
+)
+```
+
 
 
 
